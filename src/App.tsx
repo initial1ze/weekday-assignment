@@ -1,9 +1,9 @@
-import JobsCard from "./components/JobsCard/JobsCard";
+import JobsContainer from "./components/JobsContainer/JobsContainer";
 
 function App() {
     return (
         <>
-            <JobsCard />
+            <JobsContainer />
         </>
     );
 }

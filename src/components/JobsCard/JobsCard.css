@@ -1,19 +1,162 @@
-.jobs-card {
+.job-card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 1rem;
-    border: 1px solid #e0e0e0;
-    border-radius: 5px;
-    margin: 1rem;
-    width: 30%;
+    width: 40%;
+    border-radius: 20px;
+    padding: 5px;
+    margin: 5px;
 }
 
-.jobs-card-footer {
+.job-card-posted-container {
+    display: flex;
+    width: 100%;
+    padding: 5px 10px;
+}
+
+.job-card-posted-time {
+    display: flex;
+    align-items: flex-start;
+    padding: 5px 0px;
+    flex-wrap: wrap;
+    gap: 5px;
+    width: 100%;
+    flex: 1 1 0%;
+}
+
+.job-card-posted-content {
+    padding: 4px 6px;
+    box-shadow: rgba(6, 6, 6, 0.05) 0px 2px 6px 0px;
+    border-radius: 10px;
+    border: 1px solid rgb(230, 230, 230);
+    margin: 0px;
+    font-weight: 400;
+    line-height: 1.5;
+    font-size: 9px;
+}
+
+.job-card-content {
+    width: 100%;
+    flex: 1 1 0%;
+    padding: 8px 16px;
+}
+
+.job-card-header {
+    display: flex;
+    gap: 1rem;
+}
+
+.job-card-header img {
+    width: 25px;
+    height: 2.5rem;
+}
+
+.job-card-info>h3 {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+    color: #8b8b8b;
+}
+
+.job-card-info>h2 {
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 400;
+    margin: 0;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.job-card-info-location {
+    font-size: 11px;
+    font-weight: 500;
+    margin-top: 5px;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.job-card-content .job-card-salary {
+    font-size: 14px;
+    font-weight: 300;
+    margin: 8px 0;
+    color: rgb(77, 89, 106);
+    line-height: 1.43;
+    font-family: 'Lexend', sans-serif;
+}
+
+.job-card-description-container {
+    height: 250px;
+    overflow: hidden;
+    mask-image: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255), rgba(255, 255, 255, 0));
+}
+
+.job-card-description-more {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    position: relative;
+    top: -25px;
+}
+
+.job-card-description-more a {
+    cursor: pointer;
+    color: #4943da;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.job-card-experience-container {
+    margin-top: 10px;
+}
+
+.job-card-experience-container>h3 {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+    color: #8b8b8b;
+}
+
+.job-card-experience-container>h2 {
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(0, 0, 0, 0.87);
+    font-weight: 300;
+}
+
+.job-card-footer {
+    flex-grow: 1;
+    width: 100%;
+    padding: 0 15px;
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
 }
 
-.jobs-card-footer > button {
-    margin: 0;
+.job-card-btn-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.job-card-btn-container .job-card-footer-btn {
+    width: 100%;
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+    padding: 8px 18px;
+    text-transform: none;
+    border-radius: 8px;
+    font-family: 'Lexend', sans-serif;
+}
+
+.job-card-footer-btn.apply-btn {
+    background-color: rgb(85, 239, 196);
+}
+
+.job-card-footer-btn.refer-btn {
+    background-color: #4943da;
+    margin-bottom: 5px;
+    color: white;
+    font-weight: 300;
 }
