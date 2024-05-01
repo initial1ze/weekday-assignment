@@ -1,6 +1,19 @@
-const BASE_URI = "https://api.weekday.technology/adhoc/getSampleJdJSON";
+interface Job {
+    jdLink: string;
+    jdUid: string;
+    jobDetailsFromCompany: string;
+    jobRole: string;
+    location: string;
+    maxExp: number | null;
+    maxJdSalary: number | null;
+    minExp: number | null;
+    minJdSalary: number | null;
+    salaryCurrencyCode: string | null;
+}
 
-async function fetchJobs(limit: number, offset: number): Promise<unknown> {
+async function fetchJobs(limit: number, offset: number): Promise<Job[]> {
+    const BASE_URI = "https://api.weekday.technology/adhoc/getSampleJdJSON";
+
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
 

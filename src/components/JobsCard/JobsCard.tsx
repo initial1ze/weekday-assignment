@@ -2,18 +2,22 @@ import "./JobsCard.css";
 import Paper from "@mui/material/Paper";
 import CardContent from "@mui/material/CardContent";
 import Box from "@mui/material/Box";
-import { Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import React from "react";
 
 interface JobCardProps {
     job: {
-        company: string;
-        logo: string;
-        position: string;
+        jdLink: string;
+        jdUid: string;
+        jobDetailsFromCompany: string;
+        jobRole: string;
         location: string;
-        description: string;
-        referralLink: string;
+        maxExp: number | null;
+        maxJdSalary: number | null;
+        minExp: number | null;
+        minJdSalary: number | null;
+        salaryCurrencyCode: string | null;
     };
 }
 
@@ -35,8 +39,8 @@ const JobsCard: React.FC<JobCardProps> = ({ job }) => {
                     />
                     <div>
                         <div className="job-card-info">
-                            <h3>{job.company}</h3>
-                            <h2>{job.position}</h2>
+                            <h3>ABC Company</h3>
+                            <h2>{job.jobRole}</h2>
                         </div>
                         <p className="job-card-info-location">{job.location}</p>
                     </div>
@@ -49,11 +53,11 @@ const JobsCard: React.FC<JobCardProps> = ({ job }) => {
                     <Typography variant="body1" className="job-card-about">
                         About Company
                     </Typography>
-                    <p>{job.description}</p>
+                    <p>{job.jobDetailsFromCompany}</p>
                 </Box>
                 <Box className="job-card-description-more">
                     <a href={""} target="_blank" rel="noreferrer">
-                        <strong>View Job</strong>
+                        View Job
                     </a>
                 </Box>
                 <Box className="job-card-experience-container">
