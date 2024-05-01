@@ -1,17 +1,6 @@
-interface Job {
-    jdLink: string;
-    jdUid: string;
-    jobDetailsFromCompany: string;
-    jobRole: string;
-    location: string;
-    maxExp: number | null;
-    maxJdSalary: number | null;
-    minExp: number | null;
-    minJdSalary: number | null;
-    salaryCurrencyCode: string | null;
-}
+import { ApiResult } from "../interfaces";
 
-async function fetchJobs(limit: number, offset: number): Promise<Job[]> {
+async function fetchJobs(limit: number, offset: number): Promise<ApiResult> {
     const BASE_URI = "https://api.weekday.technology/adhoc/getSampleJdJSON";
 
     const headers = new Headers();
@@ -30,6 +19,7 @@ async function fetchJobs(limit: number, offset: number): Promise<Job[]> {
 
     const response = await fetch(BASE_URI, requestOptions);
     const result = await response.json();
+    console.log("result", result);
 
     return result;
 }

@@ -167,15 +167,16 @@
     font-weight: 500;
     padding: 8px 18px;
     text-transform: none;
+    text-decoration: none;
     border-radius: 8px;
     font-family: 'Lexend', sans-serif;
 }
 
-.job-card-footer-btn.apply-btn {
+.job-card-footer-btn.apply-btn, .job-card-footer-btn.apply-btn:hover {
     background-color: rgb(85, 239, 196);
 }
 
-.job-card-footer-btn.refer-btn {
+.job-card-footer-btn.refer-btn, .job-card-footer-btn.refer-btn:hover {
     background-color: #4943da;
     margin-bottom: 5px;
     color: white;

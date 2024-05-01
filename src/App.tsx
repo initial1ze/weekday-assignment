@@ -1,7 +1,7 @@
-import JobsContainer from "./components/JobsContainer/JobsContainer";
+import Home from "./pages/Home/Home";
 
 function App() {
-    return <JobsContainer />;
+    return <Home />;
 }
 
 export default App;

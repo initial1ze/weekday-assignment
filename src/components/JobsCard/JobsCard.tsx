@@ -5,21 +5,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import React from "react";
-
-interface JobCardProps {
-    job: {
-        jdLink: string;
-        jdUid: string;
-        jobDetailsFromCompany: string;
-        jobRole: string;
-        location: string;
-        maxExp: number | null;
-        maxJdSalary: number | null;
-        minExp: number | null;
-        minJdSalary: number | null;
-        salaryCurrencyCode: string | null;
-    };
-}
+import { JobCardProps } from "../../interfaces";
 
 const JobsCard: React.FC<JobCardProps> = ({ job }) => {
     return (
@@ -46,7 +32,10 @@ const JobsCard: React.FC<JobCardProps> = ({ job }) => {
                     </div>
                 </Box>
                 <Typography variant="body2" className="job-card-salary">
-                    Estimated Salary: 13 - 15 LPA
+                    Estimated Salary:{" "}
+                    {job.minJdSalary ? `${job.minJdSalary} - ` : null}
+                    {job.maxJdSalary ? job.maxJdSalary : null}{" "}
+                    {job.salaryCurrencyCode ? job.salaryCurrencyCode : null}
                     <span aria-label="Offered salary range"> ✅</span>
                 </Typography>
                 <Box className="job-card-description-container">
@@ -56,21 +45,35 @@ const JobsCard: React.FC<JobCardProps> = ({ job }) => {
                     <p>{job.jobDetailsFromCompany}</p>
                 </Box>
                 <Box className="job-card-description-more">
-                    <a href={""} target="_blank" rel="noreferrer">
+                    <a href={job.jdLink} target="_blank" rel="noreferrer">
                         View Job
                     </a>
                 </Box>
                 <Box className="job-card-experience-container">
                     <h3>Minimum Experience</h3>
-                    <h2>1 Years</h2>
+                    <h2>
+                        {job.minExp ? `${job.minExp} years` : "Not Specified"}
+                    </h2>
                 </Box>
             </CardContent>
             <Box className="job-card-footer">
                 <Box className="job-card-btn-container">
-                    <Button className="apply-btn job-card-footer-btn">
+                    <Button
+                        className="apply-btn job-card-footer-btn"
+                        href={job.jdLink}
+                        target="_blank"
+                        rel="noreferrer"
+                        type="button"
+                    >
                         ⚡Easy Apply
                     </Button>
-                    <Button className="refer-btn job-card-footer-btn">
+                    <Button
+                        className="refer-btn job-card-footer-btn"
+                        href=""
+                        target="_blank"
+                        rel="noreferrer"
+                        type="button"
+                    >
                         Unlock referral asks
                     </Button>
                 </Box>

@@ -13,7 +13,13 @@ function debounce<T extends (...args: Parameters<T>) => void>(
     };
 }
 
-const useInfiniteScroll = (callback: () => void) => {
+function useInfiniteScroll(
+    callback: () => void
+): [
+    boolean,
+    React.Dispatch<React.SetStateAction<boolean>>,
+    React.MutableRefObject<boolean>
+] {
     const [isFetching, setIsFetching] = useState(false);
     const stop = useRef(false);
 
@@ -35,7 +41,6 @@ const useInfiniteScroll = (callback: () => void) => {
     );
 
     function handleScroll() {
-        console.log("scroll");
         if (
             window.innerHeight + document.documentElement.scrollTop <=
                 Math.floor(document.documentElement.offsetHeight * 0.75) ||
@@ -51,6 +56,6 @@ const useInfiniteScroll = (callback: () => void) => {
     }
 
     return [isFetching, setIsFetching, stop];
-};
+}
 
 export default useInfiniteScroll;
