@@ -1,7 +1,12 @@
-.jobs-container {
-    /* box-sizing: border-box;
-        display: flex;
-        flex-flow: wrap;
-        margin-top: -24px; */
-        /* width: calc(100% + 24px); */
+.jobs-container-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    row-gap: 20px;
+    padding: 25px;
+}
+
+.jobs-item-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

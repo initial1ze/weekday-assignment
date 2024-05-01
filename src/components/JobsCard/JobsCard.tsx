@@ -46,6 +46,9 @@ const JobsCard: React.FC<JobCardProps> = ({ job }) => {
                     <span aria-label="Offered salary range"> ✅</span>
                 </Typography>
                 <Box className="job-card-description-container">
+                    <Typography variant="body1" className="job-card-about">
+                        About Company
+                    </Typography>
                     <p>{job.description}</p>
                 </Box>
                 <Box className="job-card-description-more">

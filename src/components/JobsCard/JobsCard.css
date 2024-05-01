@@ -2,10 +2,18 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 40%;
+    max-width: 360px;
     border-radius: 20px;
     padding: 5px;
     margin: 5px;
+    border: 1px solid rgba(230, 230, 230, 0.815);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.job-card:hover {
+    margin-top: 4px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .job-card-posted-container {
@@ -87,6 +95,19 @@
     height: 250px;
     overflow: hidden;
     mask-image: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255), rgba(255, 255, 255, 0));
+}
+
+.job-card-description-container .job-card-about {
+    margin: 0px;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 500;
+    font-family: 'Lexend', sans-serif;
+}
+
+.job-card-description-container>p {
+    font-weight: 300;
+    font-size: 14px;
 }
 
 .job-card-description-more {

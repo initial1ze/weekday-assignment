@@ -31,23 +31,34 @@ const JobsContainer = () => {
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
             referralLink: "https://example.com/referral-link",
         },
+
+        {
+            company: "ABC Company",
+            logo: "path/to/logo.png",
+            position: "Software Engineer",
+            location: "India",
+            description:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+            referralLink: "https://example.com/referral-link",
+        },
+
+        {
+            company: "ABC Company",
+            logo: "path/to/logo.png",
+            position: "Software Engineer",
+            location: "India",
+            description:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+            referralLink: "https://example.com/referral-link",
+        },
     ];
     return (
-        <Grid container spacing={"3"} className="jobs-container">
-            <Grid item className="jobs-header">
-                <Grid
-                    item
-                    // xs={12}
-                    // sm={6}
-                    // md={4}
-                    // lg={3}
-                    // className="jobs-container"
-                >
-                    {jobs.map((job, index) => (
-                        <JobsCard key={index} job={job} />
-                    ))}
+        <Grid container spacing={"3"} className="jobs-container-grid">
+            {jobs.map((job, index) => (
+                <Grid item xs={12} md={6} lg={4} className="jobs-item-grid">
+                    <JobsCard key={index} job={job} />
                 </Grid>
-            </Grid>
+            ))}
         </Grid>
     );
 };

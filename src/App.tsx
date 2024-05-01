@@ -1,11 +1,7 @@
 import JobsContainer from "./components/JobsContainer/JobsContainer";
 
 function App() {
-    return (
-        <>
-            <JobsContainer />
-        </>
-    );
+    return <JobsContainer />;
 }
 
 export default App;
