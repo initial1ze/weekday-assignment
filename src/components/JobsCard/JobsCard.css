@@ -1,0 +1,19 @@
+.jobs-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    margin: 1rem;
+    width: 30%;
+}
+
+.jobs-card-footer {
+    display: flex;
+    flex-direction: column;
+}
+
+.jobs-card-footer > button {
+    margin: 0;
+}
