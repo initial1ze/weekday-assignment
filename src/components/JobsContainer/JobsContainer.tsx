@@ -2,7 +2,7 @@ import { Grid } from "@mui/material";
 import JobsCard from "../JobsCard/JobsCard";
 import "./JobsContainer.css";
 import { useEffect, useRef, useState } from "react";
-import useInfiniteScroll from "../hooks/useInfiniteScroll";
+import useInfiniteScroll from "../../hooks/useInfiniteScroll";
 import fetchJobs from "../../services/fetchJobs";
 import { Job } from "../../interfaces";
 

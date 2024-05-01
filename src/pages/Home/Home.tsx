@@ -1,7 +1,13 @@
+import FiltersContainer from "../../components/FiltersContainer/FiltersContainer";
 import JobsContainer from "../../components/JobsContainer/JobsContainer";
 
 const Home = () => {
-    return <JobsContainer />;
+    return (
+        <>
+            <FiltersContainer />
+            <JobsContainer />
+        </>
+    );
 };
 
 export default Home;

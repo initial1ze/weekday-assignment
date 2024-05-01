@@ -26,23 +26,33 @@ const JobsCard: React.FC<JobCardProps> = ({ job }) => {
                     <div>
                         <div className="job-card-info">
                             <h3>ABC Company</h3>
-                            <h2>{job.jobRole}</h2>
+                            <h2>{job.jobRole || "Role Not Specified"}</h2>
                         </div>
-                        <p className="job-card-info-location">{job.location}</p>
+                        <p className="job-card-info-location">
+                            {job.location || "Location Not Specified"}
+                        </p>
                     </div>
                 </Box>
                 <Typography variant="body2" className="job-card-salary">
-                    Estimated Salary:{" "}
-                    {job.minJdSalary ? `${job.minJdSalary} - ` : null}
-                    {job.maxJdSalary ? job.maxJdSalary : null}{" "}
-                    {job.salaryCurrencyCode ? job.salaryCurrencyCode : null}
-                    <span aria-label="Offered salary range"> ✅</span>
+                    {job.minJdSalary || job.maxJdSalary ? (
+                        <>
+                            {"Estimated Salary: "}
+                            {job.minJdSalary ? `${job.minJdSalary} - ` : null}
+                            {job.maxJdSalary ? job.maxJdSalary : null}{" "}
+                            {job.salaryCurrencyCode || "USD"}
+                            <span aria-label="Offered salary range"> ✅</span>
+                        </>
+                    ) : (
+                        "Salary Not Specified"
+                    )}
                 </Typography>
                 <Box className="job-card-description-container">
                     <Typography variant="body1" className="job-card-about">
                         About Company
                     </Typography>
-                    <p>{job.jobDetailsFromCompany}</p>
+                    <p>
+                        {job.jobDetailsFromCompany || "Details Not Specified"}
+                    </p>
                 </Box>
                 <Box className="job-card-description-more">
                     <a href={job.jdLink} target="_blank" rel="noreferrer">
@@ -52,7 +62,7 @@ const JobsCard: React.FC<JobCardProps> = ({ job }) => {
                 <Box className="job-card-experience-container">
                     <h3>Minimum Experience</h3>
                     <h2>
-                        {job.minExp ? `${job.minExp} years` : "Not Specified"}
+                        {job.minExp ? `${job.minExp} years` : " Not Specified"}
                     </h2>
                 </Box>
             </CardContent>
@@ -60,7 +70,7 @@ const JobsCard: React.FC<JobCardProps> = ({ job }) => {
                 <Box className="job-card-btn-container">
                     <Button
                         className="apply-btn job-card-footer-btn"
-                        href={job.jdLink}
+                        href={job.jdLink || ""}
                         target="_blank"
                         rel="noreferrer"
                         type="button"
