@@ -16,23 +16,23 @@
 .filter-btn p {
     font-family: 'Lexend', sans-serif;
     margin-bottom: 2px;
-    font-weight: 300;  
+    font-weight: 300;
 }
 
 .select-indicator {
-        align-self: stretch;
-            width: 1px;
-            background-color: rgb(204, 204, 204);
-            margin-bottom: 8px;
-            margin-top: 8px;
-            height: 20px;
-            box-sizing: border-box;
+    align-self: stretch;
+    width: 1px;
+    background-color: rgb(204, 204, 204);
+    margin-bottom: 8px;
+    margin-top: 8px;
+    height: 20px;
+    box-sizing: border-box;
 }
 
 .filter-select {
     display: flex;
     justify-content: center;
-    align-items:center ;
+    align-items: center;
     gap: 5px;
     align-self: stretch;
     flex-shrink: 0;

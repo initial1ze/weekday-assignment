@@ -1,6 +1,12 @@
 import { useState, useRef } from "react";
 import useThrottledEffect from "./useThrottle";
 
+/**
+ * Debounce function
+ * @param fn - The function
+ * @param delay - The delay
+ * @returns The debounced function
+ */
 function debounce<T extends (...args: Parameters<T>) => void>(
     this: ThisParameterType<T>,
     fn: T,
@@ -13,6 +19,7 @@ function debounce<T extends (...args: Parameters<T>) => void>(
     };
 }
 
+// Custom Hook to implement Infinite Scroll using Debouncing and Throttling
 function useInfiniteScroll(
     callback: () => void
 ): [

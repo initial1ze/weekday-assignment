@@ -4,6 +4,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { JobState } from "../interfaces";
 
+//Initial State of Jobs in Store
 const initialState: JobState = {
     jobs: [],
     filteredJobs: [],
@@ -11,6 +12,7 @@ const initialState: JobState = {
     offset: 0,
 };
 
+//Jobs Slice
 const jobsSlice = createSlice({
     name: "jobs",
     initialState,

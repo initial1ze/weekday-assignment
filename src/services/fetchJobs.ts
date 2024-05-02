@@ -1,5 +1,10 @@
 import { ApiResult } from "../interfaces";
-
+/**
+ * Fetches jobs from the API
+ * @param limit - The number of jobs to fetch
+ * @param offset - The offset for the jobs
+ * @returns The API result
+ */
 async function fetchJobs(limit: number, offset: number): Promise<ApiResult> {
     const BASE_URI = "https://api.weekday.technology/adhoc/getSampleJdJSON";
 
@@ -19,7 +24,6 @@ async function fetchJobs(limit: number, offset: number): Promise<ApiResult> {
 
     const response = await fetch(BASE_URI, requestOptions);
     const result = await response.json();
-    console.log("result", result);
 
     return result;
 }

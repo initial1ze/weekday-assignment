@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+//@ts-nocheck
 import { Grid } from "@mui/material";
 import JobsCard from "../JobsCard/JobsCard";
 import "./JobsContainer.css";
@@ -9,8 +10,11 @@ import { Job, JobState } from "../../interfaces";
 import { fetchJobsAction } from "../../slices/jobsSlice";
 import { useSelector, useDispatch } from "react-redux";
 
+/**
+ * Jobs container component
+ * @returns The jobs container component
+ */
 const JobsContainer = () => {
-    // @ts-ignore
     const { filteredJobs, jobs, offset } = useSelector<JobState>(
         (state: JobState) => state.jobs
     );
@@ -18,6 +22,7 @@ const JobsContainer = () => {
     const totalCount = useRef(0);
     const [, setIsFetching, stop] = useInfiniteScroll(fetchMoreJobs);
 
+    // Fetch more jobs
     async function fetchMoreJobs() {
         if (totalCount.current === jobs.length) {
             stop.current = true;

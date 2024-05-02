@@ -7,6 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { setFilteredJobs, setJobFilters } from "../../slices/jobsSlice";
 import { Job } from "../../interfaces";
 
+/**
+ * Filter button component
+ * @param filter - The filter to apply
+ * @param options - The options to display
+ * @returns The filter button component
+ */
 const FilterButton = ({ filter, options }) => {
     const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
     const dispatch = useDispatch();

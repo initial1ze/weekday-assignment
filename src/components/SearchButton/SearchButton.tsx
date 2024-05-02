@@ -5,11 +5,16 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilteredJobs } from "../../slices/jobsSlice";
 
+/**
+ * Search button component
+ * @returns The search button component
+ */
 const SearchButton = () => {
     const [searchTerm, setSearchTerm] = useState<string>("");
     const { jobs } = useSelector((state) => state.jobs);
     const dispatch = useDispatch();
 
+    // Handle Form Submission
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         const filteredJobs = jobs.filter(

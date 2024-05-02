@@ -1,5 +1,11 @@
 import { useRef, useEffect } from "react";
 
+/**
+ * Throttle the effect
+ * @param callback - The callback function
+ * @param delay - The delay
+ * @param deps - The dependencies
+ */
 function useThrottledEffect(
     callback: () => void,
     delay: number,

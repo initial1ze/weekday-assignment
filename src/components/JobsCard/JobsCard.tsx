@@ -7,6 +7,11 @@ import Button from "@mui/material/Button";
 import React from "react";
 import { JobCardProps } from "../../interfaces";
 
+/**
+ * Jobs card component
+ * @param job - The job to display
+ * @returns The jobs card component
+ */
 const JobsCard: React.FC<JobCardProps> = ({ job }) => {
     return (
         <Paper className="job-card" elevation={1}>

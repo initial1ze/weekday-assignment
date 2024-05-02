@@ -6,8 +6,13 @@ import FilterButton from "../FilterButton/FilterButton";
 import "./FiltersContainer.css";
 import SearchButton from "../SearchButton/SearchButton";
 
+/**
+ * Filters container component
+ * @returns The filters container component
+ */
 const FiltersContainer = () => {
     const { jobs } = useSelector((state: JobState) => state.jobs);
+    // buttonsData is an array of objects with filter and options properties
     const buttonsData = [
         {
             filter: "Roles",
