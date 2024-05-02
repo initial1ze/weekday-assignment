@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { Job, JobState } from "../../interfaces";
 import FilterButton from "../FilterButton/FilterButton";
 import "./FiltersContainer.css";
+import SearchButton from "../SearchButton/SearchButton";
 
 const FiltersContainer = () => {
     const { jobs } = useSelector((state: JobState) => state.jobs);
@@ -48,6 +49,7 @@ const FiltersContainer = () => {
                     options={buttonData.options}
                 />
             ))}
+            <SearchButton />
         </div>
     );
 };
