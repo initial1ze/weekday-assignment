@@ -4,7 +4,7 @@ import "./FiltersContainer.css";
 const FiltersContainer = () => {
     const buttonsData = [
         {
-            purpose: "Roles",
+            filter: "Roles",
             options: [
                 "Software Engineer",
                 "Product Manager",
@@ -14,7 +14,7 @@ const FiltersContainer = () => {
             ],
         },
         {
-            purpose: "No Of Employees",
+            filter: "No Of Employees",
             options: [
                 "1-10",
                 "11-20",
@@ -26,11 +26,11 @@ const FiltersContainer = () => {
             ],
         },
         {
-            purpose: "Experience",
+            filter: "Experience",
             options: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
         },
         {
-            purpose: "Remote",
+            filter: "Remote",
             options: ["Remote", "Hybrid", "In-Office"],
         },
     ];
@@ -40,7 +40,7 @@ const FiltersContainer = () => {
             {buttonsData.map((buttonData, index) => (
                 <FilterButton
                     key={index}
-                    purpose={buttonData.purpose}
+                    filter={buttonData.filter}
                     options={buttonData.options}
                 />
             ))}

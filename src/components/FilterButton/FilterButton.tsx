@@ -2,7 +2,7 @@ import { Autocomplete, Box, Icon, TextField, Typography } from "@mui/material";
 import "./FilterButton.css";
 import { useEffect, useState } from "react";
 
-const FilterButton = ({ purpose, options }) => {
+const FilterButton = ({ filter, options }) => {
     const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
     useEffect(() => {
         console.log(selectedOptions);
@@ -11,7 +11,7 @@ const FilterButton = ({ purpose, options }) => {
         <Box className="filter-btn">
             {selectedOptions.length ? (
                 <Typography variant="body1" className="filter-btn-title">
-                    {purpose}
+                    {filter}
                 </Typography>
             ) : null}
             <Autocomplete
@@ -24,7 +24,7 @@ const FilterButton = ({ purpose, options }) => {
                 renderInput={(params) => (
                     <TextField
                         {...params}
-                        placeholder={selectedOptions.length ? "" : purpose}
+                        placeholder={selectedOptions.length ? "" : filter}
                         style={{
                             padding: "0rem",
                         }}

@@ -20,4 +20,9 @@ interface ApiResult {
     count: number;
 }
 
-export type { Job, JobCardProps, ApiResult };
+interface JobState {
+    jobs: Job[];
+    offset: number;
+}
+
+export type { Job, JobCardProps, ApiResult, JobState };
