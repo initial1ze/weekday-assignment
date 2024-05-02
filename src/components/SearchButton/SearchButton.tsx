@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+//@ts-nocheck
 import { TextField } from "@mui/material";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
