@@ -6,26 +6,31 @@ import { ApiResult } from "../interfaces";
  * @returns The API result
  */
 async function fetchJobs(limit: number, offset: number): Promise<ApiResult> {
-    const BASE_URI = "https://api.weekday.technology/adhoc/getSampleJdJSON";
+    try {
+        const BASE_URI = "https://api.weekday.technology/adhoc/getSampleJdJSON";
 
-    const headers = new Headers();
-    headers.append("Content-Type", "application/json");
+        const headers = new Headers();
+        headers.append("Content-Type", "application/json");
 
-    const body = JSON.stringify({
-        limit,
-        offset,
-    });
+        const body = JSON.stringify({
+            limit,
+            offset,
+        });
 
-    const requestOptions: RequestInit = {
-        method: "POST",
-        headers,
-        body,
-    };
+        const requestOptions: RequestInit = {
+            method: "POST",
+            headers,
+            body,
+        };
 
-    const response = await fetch(BASE_URI, requestOptions);
-    const result = await response.json();
+        const response = await fetch(BASE_URI, requestOptions);
+        const result = await response.json();
 
-    return result;
+        return result;
+    } catch (error) {
+        console.error("Error fetching jobs", error);
+        throw error;
+    }
 }
 
 export default fetchJobs;

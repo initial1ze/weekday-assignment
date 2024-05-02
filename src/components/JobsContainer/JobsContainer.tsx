@@ -24,20 +24,28 @@ const JobsContainer = () => {
 
     // Fetch more jobs
     async function fetchMoreJobs() {
-        if (totalCount.current === jobs.length) {
-            stop.current = true;
-            return;
+        try {
+            if (totalCount.current === jobs.length) {
+                stop.current = true;
+                return;
+            }
+            const result = await fetchJobs(10, offset);
+            dispatch(fetchJobsAction(result.jdList));
+            setIsFetching(false);
+        } catch (error) {
+            console.error("Error fetching more jobs", error);
         }
-        const result = await fetchJobs(10, offset);
-        dispatch(fetchJobsAction(result.jdList));
-        setIsFetching(false);
     }
 
     useEffect(() => {
         async function getJobs() {
-            const result = await fetchJobs(10, offset);
-            dispatch(fetchJobsAction(result.jdList));
-            totalCount.current = result.count;
+            try {
+                const result = await fetchJobs(10, offset);
+                dispatch(fetchJobsAction(result.jdList));
+                totalCount.current = result.count;
+            } catch (error) {
+                console.error("Error fetching jobs", error);
+            }
         }
         getJobs();
 
