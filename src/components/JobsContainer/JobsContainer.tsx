@@ -11,7 +11,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 const JobsContainer = () => {
     // @ts-ignore
-    const { jobs, offset } = useSelector<JobState>(
+    const { filteredJobs, jobs, offset } = useSelector<JobState>(
         (state: JobState) => state.jobs
     );
     const dispatch = useDispatch();
@@ -41,7 +41,7 @@ const JobsContainer = () => {
 
     return (
         <Grid container spacing={"3"} className="jobs-container-grid">
-            {jobs.map((job: Job) => (
+            {filteredJobs.map((job: Job) => (
                 <Grid item xs={12} md={6} lg={4} className="jobs-grid-item">
                     <JobsCard key={job.jdUid} job={job} />
                 </Grid>

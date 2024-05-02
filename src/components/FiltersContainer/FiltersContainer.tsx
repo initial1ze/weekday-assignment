@@ -1,17 +1,21 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+//@ts-nocheck
+import { useSelector } from "react-redux";
+import { Job, JobState } from "../../interfaces";
 import FilterButton from "../FilterButton/FilterButton";
 import "./FiltersContainer.css";
 
 const FiltersContainer = () => {
+    const { jobs } = useSelector((state: JobState) => state.jobs);
     const buttonsData = [
         {
             filter: "Roles",
-            options: [
-                "Software Engineer",
-                "Product Manager",
-                "Data Analyst",
-                "Data Scientist",
-                "UX Designer",
-            ],
+            options: jobs
+                .map((job: Job) => job.jobRole)
+                .filter(
+                    (value: string, index: number, self: string) =>
+                        self.indexOf(value) === index
+                ),
         },
         {
             filter: "No Of Employees",

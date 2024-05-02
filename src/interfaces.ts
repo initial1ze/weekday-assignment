@@ -20,9 +20,20 @@ interface ApiResult {
     count: number;
 }
 
+interface JobFilters {
+    jobRole: string[];
+    companyName: string;
+    location: string[];
+    minExp: number;
+    minJdSalary: number[];
+    remote: boolean;
+}
+
 interface JobState {
     jobs: Job[];
+    filteredJobs: Job[];
     offset: number;
+    jobFilters: JobFilters | null;
 }
 
 export type { Job, JobCardProps, ApiResult, JobState };
