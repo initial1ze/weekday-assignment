@@ -3,12 +3,7 @@
     flex-direction: column;
     min-width: 200px;
     align-items: flex-start;
-    justify-content: center;
     padding: 2px;
-}
-.btn-container {
-    display: flex;
-    justify-content: center;
     align-items: center;
 }
 
