@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 //@ts-nocheck
-import { Autocomplete, Box, TextField, Typography } from "@mui/material";
+import { Autocomplete, Box, TextField } from "@mui/material";
 import "./FilterButton.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -37,11 +37,6 @@ const FilterButton = ({ filter, options }) => {
 
     return (
         <Box className="filter-btn">
-            {selectedOptions.length ? (
-                <Typography variant="body1" className="filter-btn-title">
-                    {filter}
-                </Typography>
-            ) : null}
             <Autocomplete
                 style={{
                     minWidth: "200px",
@@ -52,7 +47,7 @@ const FilterButton = ({ filter, options }) => {
                 renderInput={(params) => (
                     <TextField
                         {...params}
-                        placeholder={selectedOptions.length ? "" : filter}
+                        placeholder={filter}
                         style={{
                             padding: "0rem",
                         }}

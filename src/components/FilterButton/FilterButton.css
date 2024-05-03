@@ -6,6 +6,11 @@
     justify-content: center;
     padding: 2px;
 }
+.btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .filter-btn input {
     font-family: 'Lexend', sans-serif;
