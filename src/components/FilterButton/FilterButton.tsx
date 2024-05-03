@@ -18,7 +18,7 @@ const FilterButton = ({ filter, options }) => {
     const dispatch = useDispatch();
     const { jobFilters, jobs } = useSelector((state) => state.jobs);
     useEffect(() => {
-        if (selectedOptions.length) {
+        if (selectedOptions !== null && selectedOptions.length) {
             const filteredJobs = jobs.filter((job: Job) => {
                 return selectedOptions.every((option) =>
                     job.jobRole.includes(option)
