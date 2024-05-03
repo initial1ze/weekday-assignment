@@ -29,7 +29,7 @@ const JobsContainer = () => {
                 stop.current = true;
                 return;
             }
-            const result = await fetchJobs(10, offset);
+            const result = await fetchJobs(offset);
             dispatch(fetchJobsAction(result.jdList));
             setIsFetching(false);
         } catch (error) {
@@ -40,7 +40,7 @@ const JobsContainer = () => {
     useEffect(() => {
         async function getJobs() {
             try {
-                const result = await fetchJobs(10, offset);
+                const result = await fetchJobs(offset);
                 dispatch(fetchJobsAction(result.jdList));
                 totalCount.current = result.count;
             } catch (error) {
