@@ -50,7 +50,7 @@ function useInfiniteScroll(
     function handleScroll() {
         if (
             window.innerHeight + document.documentElement.scrollTop <=
-                Math.floor(document.documentElement.offsetHeight * 0.75) ||
+                Math.floor(document.documentElement.offsetHeight * 0.5) ||
             isFetching ||
             stop.current
         )
