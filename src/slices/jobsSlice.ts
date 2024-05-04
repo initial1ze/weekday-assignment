@@ -7,8 +7,13 @@ import { JobState } from "../interfaces";
 //Initial State of Jobs in Store
 const initialState: JobState = {
     jobs: [],
-    filteredJobs: [],
-    jobFilters: null,
+    jobFilters: {
+        jobRole: [],
+        companyName: "",
+        minExp: 0,
+        minJdSalary: "",
+        remote: [],
+    },
     offset: 0,
 };
 
@@ -19,29 +24,7 @@ const jobsSlice = createSlice({
     reducers: {
         fetchJobsAction(state, action) {
             state.jobs = [...state.jobs, ...action.payload];
-            state.filteredJobs = state.jobs;
-            if (state.jobFilters !== null) {
-                if (state.jobFilters.jobRole.length > 0) {
-                    state.filteredJobs = state.filteredJobs.filter((job) => {
-                        return state.jobFilters.jobRole.every((role) =>
-                            job.jobRole.includes(role)
-                        );
-                    });
-                }
-
-                if (state.jobFilters.minExp > 0) {
-                    state.filteredJobs = state.filteredJobs.filter((job) => {
-                        return job.minExp !== null
-                            ? job.minExp >= state.jobFilters.minExp
-                            : false;
-                    });
-                }
-            }
-
             state.offset++;
-        },
-        setFilteredJobs(state, action) {
-            state.filteredJobs = action.payload;
         },
         setJobFilters(state, action) {
             state.jobFilters = {
@@ -52,7 +35,6 @@ const jobsSlice = createSlice({
     },
 });
 
-export const { fetchJobsAction, setFilteredJobs, setJobFilters } =
-    jobsSlice.actions;
+export const { fetchJobsAction, setJobFilters } = jobsSlice.actions;
 
 export default jobsSlice.reducer;

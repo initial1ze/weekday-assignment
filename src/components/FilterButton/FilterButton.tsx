@@ -2,10 +2,8 @@
 //@ts-nocheck
 import { Autocomplete, Box, TextField } from "@mui/material";
 import "./FilterButton.css";
-import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setFilteredJobs, setJobFilters } from "../../slices/jobsSlice";
-import { Job } from "../../interfaces";
+import { setJobFilters } from "../../slices/jobsSlice";
 
 /**
  * Filter button component
@@ -14,26 +12,17 @@ import { Job } from "../../interfaces";
  * @returns The filter button component
  */
 const FilterButton = ({ filter, options }) => {
-    const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
     const dispatch = useDispatch();
-    const { jobFilters, jobs } = useSelector((state) => state.jobs);
-    useEffect(() => {
-        if (selectedOptions !== null && selectedOptions.length) {
-            const filteredJobs = jobs.filter((job: Job) => {
-                return selectedOptions.every((option) =>
-                    job.jobRole.includes(option)
-                );
-            });
+    const { jobFilters } = useSelector((state) => state.jobs);
 
-            dispatch(setFilteredJobs(filteredJobs));
-            dispatch(
-                setJobFilters({ ...jobFilters, jobRole: selectedOptions })
-            );
-        } else {
-            dispatch(setFilteredJobs(jobs));
-            dispatch(setJobFilters({ ...jobFilters, jobRole: [] }));
-        }
-    }, [selectedOptions]);
+    const filterNameToValue = Object.freeze({
+        Experience: "minExp",
+        Roles: "jobRole",
+        Company: "companyName",
+        Remote: "remote",
+        "Minimum Base Salary": "minJdSalary",
+    });
+    const filterName = filterNameToValue[filter];
 
     return (
         <Box className="filter-btn">
@@ -42,7 +31,11 @@ const FilterButton = ({ filter, options }) => {
                     minWidth: "200px",
                 }}
                 size="small"
-                multiple={filter === "Experience" ? false : true}
+                multiple={
+                    filter === "Experience" || filter === "Minimum Base Salary"
+                        ? false
+                        : true
+                }
                 options={options}
                 renderInput={(params) => (
                     <TextField
@@ -53,8 +46,14 @@ const FilterButton = ({ filter, options }) => {
                         }}
                     />
                 )}
+                getOptionLabel={(option) => String(option)}
                 onChange={(event, value: string[]) => {
-                    setSelectedOptions(value);
+                    const newJobFilters = {
+                        ...jobFilters,
+                        [filterName]: value,
+                    };
+                    console.log(newJobFilters);
+                    dispatch(setJobFilters(newJobFilters));
                 }}
             />
         </Box>

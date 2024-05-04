@@ -3,7 +3,7 @@
 import { Grid } from "@mui/material";
 import JobsCard from "../JobsCard/JobsCard";
 import "./JobsContainer.css";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import useInfiniteScroll from "../../hooks/useInfiniteScroll";
 import fetchJobs from "../../services/fetchJobs";
 import { Job, JobState } from "../../interfaces";
@@ -15,12 +15,13 @@ import { useSelector, useDispatch } from "react-redux";
  * @returns The jobs container component
  */
 const JobsContainer = () => {
-    const { filteredJobs, jobs, offset } = useSelector<JobState>(
+    const { jobFilters, jobs, offset } = useSelector<JobState>(
         (state: JobState) => state.jobs
     );
     const dispatch = useDispatch();
     const totalCount = useRef(0);
-    const [, setIsFetching, stop] = useInfiniteScroll(fetchMoreJobs);
+    const [filteredJobs, setFilteredJobs] = useState<Job[]>([]);
+    const [isFetching, setIsFetching, stop] = useInfiniteScroll(fetchMoreJobs);
 
     // Fetch more jobs
     async function fetchMoreJobs() {
@@ -30,7 +31,14 @@ const JobsContainer = () => {
                 return;
             }
             const result = await fetchJobs(offset);
-            dispatch(fetchJobsAction(result.jdList));
+            const jdList = result.jdList.map((job: Job) => {
+                const isRemote = job.location === "remote";
+                return {
+                    ...job,
+                    remote: isRemote,
+                };
+            });
+            dispatch(fetchJobsAction(jdList));
             setIsFetching(false);
         } catch (error) {
             console.error("Error fetching more jobs", error);
@@ -41,16 +49,50 @@ const JobsContainer = () => {
         async function getJobs() {
             try {
                 const result = await fetchJobs(offset);
-                dispatch(fetchJobsAction(result.jdList));
+                const jdList = result.jdList.map((job: Job) => {
+                    const isRemote = job.location === "remote";
+                    return {
+                        ...job,
+                        remote: isRemote,
+                    };
+                });
+                dispatch(fetchJobsAction(jdList));
                 totalCount.current = result.count;
             } catch (error) {
                 console.error("Error fetching jobs", error);
             }
         }
         getJobs();
-
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    useEffect(() => {
+        function filterJobs(job: Job) {
+            return (
+                (jobFilters["jobRole"].length == 0 ||
+                    jobFilters["jobRole"].includes(job.jobRole)) &&
+                (jobFilters["minExp"] === null ||
+                    jobFilters["minExp"] <= job.minExp) &&
+                (jobFilters["minJdSalary"] === null ||
+                    Number(jobFilters["minJdSalary"].slice(0, -1)) <=
+                        job.minJdSalary ||
+                    Number(jobFilters["minJdSalary"].slice(0, -1)) <=
+                        job.maxJdSalary) &&
+                (jobFilters["remote"].length === 0 ||
+                    (jobFilters["remote"].includes("Remote") && job.remote) ||
+                    (jobFilters["remote"].includes("In-Office") &&
+                        !job.remote) ||
+                    (jobFilters["remote"].includes("Hybrid") && true)) &&
+                (jobFilters["companyName"] === "" ||
+                    job.companyName
+                        .toLowerCase()
+                        .includes(jobFilters["companyName"].toLowerCase()))
+            );
+        }
+
+        const filteredJobs = jobs.filter(filterJobs);
+        setFilteredJobs(filteredJobs);
+    }, [jobFilters, jobs, offset]);
 
     return (
         <Grid container spacing={"3"} className="jobs-container-grid">
@@ -59,6 +101,15 @@ const JobsContainer = () => {
                     <JobsCard key={job.jdUid} job={job} />
                 </Grid>
             ))}
+            {isFetching && (
+                <div
+                    style={{
+                        margin: "auto",
+                    }}
+                >
+                    Loading more jobs...
+                </div>
+            )}
         </Grid>
     );
 };

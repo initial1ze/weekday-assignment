@@ -9,6 +9,8 @@ interface Job {
     minExp: number | null;
     minJdSalary: number | null;
     salaryCurrencyCode: string | null;
+    companyName: string;
+    logoUrl: string;
 }
 
 interface JobCardProps {

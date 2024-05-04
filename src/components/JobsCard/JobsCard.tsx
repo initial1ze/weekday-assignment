@@ -24,13 +24,10 @@ const JobsCard: React.FC<JobCardProps> = ({ job }) => {
             </Box>
             <CardContent className="job-card-content">
                 <Box className="job-card-header">
-                    <img
-                        src="https://storage.googleapis.com/weekday-assets/airtableAttachment_1713598306546_majma.jpg"
-                        alt="Company Logo"
-                    />
+                    <img src={job.logoUrl} alt="Company Logo" />
                     <div>
                         <div className="job-card-info">
-                            <h3>ABC Company</h3>
+                            <h3>{job.companyName}</h3>
                             <h2>{job.jobRole || "Role Not Specified"}</h2>
                         </div>
                         <p className="job-card-info-location">
@@ -42,8 +39,10 @@ const JobsCard: React.FC<JobCardProps> = ({ job }) => {
                     {job.minJdSalary || job.maxJdSalary ? (
                         <>
                             {"Estimated Salary: "}
-                            {job.minJdSalary ? `${job.minJdSalary} - ` : null}
-                            {job.maxJdSalary ? job.maxJdSalary : null}{" "}
+                            {job.minJdSalary ? `${job.minJdSalary}k - ` : null}
+                            {job.maxJdSalary
+                                ? `${job.maxJdSalary}k`
+                                : null}{" "}
                             {job.salaryCurrencyCode || "USD"}
                             <span aria-label="Offered salary range"> ✅</span>
                         </>
@@ -84,7 +83,7 @@ const JobsCard: React.FC<JobCardProps> = ({ job }) => {
                     </Button>
                     <Button
                         className="refer-btn job-card-footer-btn"
-                        href=""
+                        href={job.jdLink || ""}
                         target="_blank"
                         rel="noreferrer"
                         type="button"
