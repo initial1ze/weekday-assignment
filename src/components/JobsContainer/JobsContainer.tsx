@@ -64,7 +64,7 @@ const JobsContainer = () => {
         }
         getJobs();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [offset, jobFilters]);
+    }, []);
 
     useEffect(() => {
         function filterJobs(job: Job) {
