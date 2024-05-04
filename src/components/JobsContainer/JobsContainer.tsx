@@ -48,7 +48,7 @@ const JobsContainer = () => {
     useEffect(() => {
         async function getJobs() {
             try {
-                const result = await fetchJobs(offset, 10);
+                const result = await fetchJobs(offset);
                 const jdList = result.jdList.map((job: Job) => {
                     const isRemote = job.location === "remote";
                     return {
@@ -64,7 +64,7 @@ const JobsContainer = () => {
         }
         getJobs();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [offset, jobFilters]);
 
     useEffect(() => {
         function filterJobs(job: Job) {
