@@ -48,7 +48,7 @@ const JobsContainer = () => {
     useEffect(() => {
         async function getJobs() {
             try {
-                const result = await fetchJobs(offset);
+                const result = await fetchJobs(offset, 10);
                 const jdList = result.jdList.map((job: Job) => {
                     const isRemote = job.location === "remote";
                     return {

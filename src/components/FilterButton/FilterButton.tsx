@@ -52,7 +52,6 @@ const FilterButton = ({ filter, options }) => {
                         ...jobFilters,
                         [filterName]: value,
                     };
-                    console.log(newJobFilters);
                     dispatch(setJobFilters(newJobFilters));
                 }}
             />
